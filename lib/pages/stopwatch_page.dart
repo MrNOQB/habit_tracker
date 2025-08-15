@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/data.dart';
 import 'package:habit_tracker/models/time_object.dart';
 import 'package:habit_tracker/notifiers/tasks_notifier.dart';
 
@@ -210,6 +211,7 @@ class _StopWatchPageState extends State<StopWatchPage> {
               ElevatedButton(
                 onPressed: () {
                   saveTime();
+                  saveTasks(tasks.value);
                 },
                 child: Icon(Icons.save_alt),
               ),
@@ -240,6 +242,7 @@ class _StopWatchPageState extends State<StopWatchPage> {
                           null; // or pick another key from tasks.value.keys.first
                     }
                   });
+                  saveTasks(tasks.value);
                 },
 
                 child: Icon(Icons.delete),

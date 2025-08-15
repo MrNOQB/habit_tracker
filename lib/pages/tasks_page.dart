@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/data.dart';
 import 'package:habit_tracker/notifiers/tasks_notifier.dart';
 
 class TasksPage extends StatefulWidget {
@@ -57,6 +58,7 @@ class _TasksPageState extends State<TasksPage> {
                             taskController.text.isNotEmpty) {
                           tasks.value[taskController.text] = "00:00:00";
                           tasks.notifyListeners();
+                          saveTasks(tasks.value);
                         }
                         taskController.clear();
                         FocusScope.of(context).unfocus();

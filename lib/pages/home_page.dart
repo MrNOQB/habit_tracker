@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import "package:habit_tracker/data.dart";
+import "package:habit_tracker/notifiers/tasks_notifier.dart";
 import "package:habit_tracker/pages/stopwatch_page.dart";
 import "package:habit_tracker/pages/tasks_page.dart";
 
@@ -17,6 +19,15 @@ class _HomePageState extends State<HomePage> {
   void navigateBottomBar(int index) {
     setState(() {
       selectedIndex = index;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadTasks().then((loaded) {
+      tasks.value = loaded;
+      tasks.notifyListeners();
     });
   }
 

@@ -17,7 +17,7 @@ Future<Map<String, String>> loadTasks() async {
     if (await file.exists()) {
       final jsonString = await file.readAsString();
       final Map<String, dynamic> decoded = jsonDecode(jsonString);
-      // Convert dynamic values to String
+
       return decoded.map((key, value) => MapEntry(key, value.toString()));
     } else {
       return {};
